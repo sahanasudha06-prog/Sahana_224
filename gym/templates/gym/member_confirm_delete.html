@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete | Gym Portal</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 60px auto;
+            padding: 35px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px #00000012;
+            text-align: center;
+        }
+
+        h1 {
+            color: #b91c1c;
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .delete-button {
+            background: #dc2626;
+            color: white;
+        }
+
+        .delete-button:hover {
+            background: #b91c1c;
+        }
+
+        .cancel-button {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Confirm Deletion</h1>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ member.name }}</strong>?
+        </p>
+
+        <p>This action cannot be undone.</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="actions">
+                <button type="submit" class="button delete-button">
+                    Yes, Delete Member
+                </button>
+
+                <a href="{% url 'member_list' %}"
+                   class="button cancel-button">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
